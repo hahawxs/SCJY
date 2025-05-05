@@ -1,0 +1,2 @@
+# SCJY
+simple website

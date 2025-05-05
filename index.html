@@ -1,39 +1,420 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>公司名称 - 主营业务</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>晟创嘉业</title>
     <style>
-        body { font-family: 'Arial', sans-serif; margin: 0; }
-        header { background: #f8f9fa; padding: 20px; text-align: center; }
-        nav { background: #333; color: white; padding: 10px; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; }
-        .banner { background: #007bff; color: white; padding: 50px; text-align: center; }
-        .cta-button { background: #ff5722; color: white; padding: 10px 20px; border-radius: 5px; }
+      /* 全局样式 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Microsoft YaHei", Arial, sans-serif;
+      }
+
+      body {
+        color: #333;
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      /* 导航栏样式 */
+      header {
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: #2c3e50;
+      }
+
+      .logo span {
+        color: #3498db;
+      }
+
+      nav ul {
+        display: flex;
+      }
+
+      nav ul li {
+        margin-left: 30px;
+        position: relative;
+      }
+
+      nav ul li a {
+        font-weight: 500;
+        padding: 5px 0;
+        transition: color 0.3s;
+      }
+
+      nav ul li a:hover {
+        color: #3498db;
+      }
+
+      /* 轮播图样式 */
+      .banner {
+        height: 500px;
+        background: linear-gradient(135deg, #3498db, #2c3e50);
+        color: white;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .banner-content {
+        width: 100%;
+        padding: 0 20px;
+      }
+
+      .banner h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+
+      .banner p {
+        font-size: 20px;
+        max-width: 800px;
+        margin: 0 auto 30px;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: #fff;
+        color: #3498db;
+        padding: 12px 30px;
+        border-radius: 30px;
+        font-weight: bold;
+        transition: all 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #f8f9fa;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* 主要内容区域 */
+      .section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .section-title h2 {
+        font-size: 36px;
+        color: #2c3e50;
+        margin-bottom: 15px;
+      }
+
+      .section-title p {
+        color: #7f8c8d;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .services {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 40px;
+      }
+
+      .service-item {
+        flex: 0 0 calc(33.333% - 30px);
+        margin-bottom: 30px;
+        padding: 30px;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        text-align: center;
+        transition: transform 0.3s;
+      }
+
+      .service-item:hover {
+        transform: translateY(-10px);
+      }
+
+      .service-icon {
+        font-size: 50px;
+        color: #3498db;
+        margin-bottom: 20px;
+      }
+
+      .service-item h3 {
+        margin-bottom: 15px;
+        color: #2c3e50;
+      }
+
+      /* 关于我们 */
+      .about {
+        background-color: #f8f9fa;
+      }
+
+      .about-content {
+        display: flex;
+        align-items: center;
+      }
+
+      .about-text {
+        flex: 1;
+        padding-right: 50px;
+      }
+
+      .about-image {
+        flex: 1;
+      }
+
+      .about-image img {
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* 页脚 */
+      footer {
+        background-color: #2c3e50;
+        color: #fff;
+        padding: 60px 0 20px;
+      }
+
+      .footer-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .footer-column {
+        flex: 0 0 calc(25% - 30px);
+        margin-bottom: 40px;
+      }
+
+      .footer-column h3 {
+        margin-bottom: 20px;
+        font-size: 18px;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-column ul li a:hover {
+        color: #3498db;
+      }
+
+      .copyright {
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 20px;
+        gap: 8px;
+      }
+
+      /* 响应式设计 */
+      @media (max-width: 768px) {
+        .header-container {
+          flex-direction: column;
+        }
+
+        nav ul {
+          margin-top: 20px;
+        }
+
+        nav ul li {
+          margin: 0 10px;
+        }
+
+        .banner {
+          height: 400px;
+        }
+
+        .banner h1 {
+          font-size: 36px;
+        }
+
+        .service-item {
+          flex: 0 0 100%;
+        }
+
+        .about-content {
+          flex-direction: column;
+        }
+
+        .about-text {
+          padding-right: 0;
+          margin-bottom: 30px;
+        }
+
+        .footer-column {
+          flex: 0 0 calc(50% - 20px);
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <!-- 导航栏 -->
     <header>
-        <h1>公司Logo</h1>
+      <div class="container header-container">
+        <div class="logo">
+          <img src="logo.png" alt="logo" width="100" height="100" />
+        </div>
+        <div>宁波晟创嘉业智能装备有限公司</div>
+        <!-- <nav>
+          <ul>
+            <li><a href="#home">首页</a></li>
+            <li><a href="#about">关于我们</a></li>
+            <li><a href="#services">服务项目</a></li>
+            <li><a href="#products">产品中心</a></li>
+            <!-- <li><a href="#news">新闻动态</a></li> -->
+            <!-- <li><a href="#contact">联系我们</a></li> -->
+          </ul>
+        </nav>
+      </div>
     </header>
-    <nav>
-        <a href="#">首页</a>
-        <a href="#">产品</a>
-        <a href="#">关于我们</a>
-        <a href="#">联系我们</a>
-    </nav>
+
+    <!-- 轮播图/横幅 -->
     <section class="banner">
-        <h2>为您提供专业的解决方案</h2>
-        <p>简洁、高效、值得信赖</p>
-        <a href="#" class="cta-button">立即咨询</a>
+      <div class="banner-content">
+        <h1>专业提供优质服务</h1>
+        <p>
+          我们致力于为客户提供最优质的产品和服务，帮助企业实现数字化转型和业务增长
+        </p>
+        <a href="#contact" class="btn">联系我们</a>
+      </div>
     </section>
-    <section style="padding: 30px;">
-        <h2>我们的服务</h2>
-        <p>这里是公司简介...</p>
+
+    <!-- 服务项目 -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>我们的服务</h2>
+          <p>
+            以技术创新为驱动，致力于为全球制造业客户提供智能化、数字化、高效化的全场景自动化解决方案，助力企业实现智能制造转型升级
+          </p>
+        </div>
+        <div class="services">
+          <div class="service-item service1">
+            <!-- <div class="service-icon">📊</div> -->
+            <div class="service-icon">💡</div>
+            <h3>全流程解决方案</h3>
+            <p>
+              我们为客户提供从需求分析到落地实施的全流程数字化解决方案，涵盖前期咨询、方案设计、研发制造、运维支持等全生命周期服务，确保项目各环节无缝衔接。
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
-    <footer style="background: #333; color: white; text-align: center; padding: 20px;">
-        <p>© 2023 公司名称. 版权所有.</p>
+
+    <!-- 关于我们 -->
+    <section class="section about">
+      <div class="container">
+        <div class="section-title">
+          <h2>关于我们</h2>
+          <p>
+            以“创新·精工·智造未来”为核心理念，公司汇聚了一支由行业专家、资深工程师组成的精英团队，秉承工匠精神与极致追求，为客户创造价值。
+          </p>
+        </div>
+        <div class="about-content">
+          <div class="about-text">
+            <h3>我们的故事</h3>
+            <p>
+              我们的使命是通过创新技术帮助企业实现数字化转型，提高业务效率，创造更大价值。我们相信，只有客户的成功才是我们真正的成功。
+            </p>
+            <!-- <p>
+              公司总部位于北京，在上海、广州、深圳等地设有分支机构，服务网络覆盖全国。
+            </p> -->
+            <!-- <a
+              href="#about"
+              class="btn"
+              style="background-color: #3498db; color: white; margin-top: 20px"
+              >了解更多</a
+            > -->
+          </div>
+          <div class="about-image">
+            <!-- <img src="https://via.placeholder.com/600x400" alt="公司团队" /> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>关于公司</h3>
+            <p>
+              我们致力于为客户提供最优质的产品和服务，帮助企业实现数字化转型和业务增长。
+            </p>
+          </div>
+          <!-- <div class="footer-column">
+            <h3>快速链接</h3>
+            <ul>
+              <li><a href="#home">首页</a></li>
+              <li><a href="#about">关于我们</a></li>
+              <li><a href="#services">服务项目</a></li>
+              <li><a href="#products">产品中心</a></li>
+              <li><a href="#contact">联系我们</a></li>
+            </ul>
+          </div> -->
+          <div class="footer-column">
+            <h3>服务项目</h3>
+            <ul>
+              <!-- <li><a href="#service1">全流程解决方案</a></li> -->
+              <li>全流程解决方案</li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>联系我们</h3>
+            <ul>
+              <li>电话: 0574-88889896</li>
+              <li>邮箱: guo.deqing@scjyie.com</li>
+              <li>地址: 浙江省宁波市镇海区骆驼街道长骆路181号C幢101室</li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>
+            &copy;
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            宁波晟创嘉业智能装备有限公司. 版权所有.
+          </p>
+        </div>
+      </div>
     </footer>
-</body>
+  </body>
 </html>
